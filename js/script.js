@@ -14,6 +14,7 @@ const modalOrderInput = $('.modal-order__input');
 const burgerBtn = $('.header__burger');
 const burgerClose =  $('.navigation__close');
 const navigation =  $('.navigation');
+const modalWrapper =  $('.modal-order__wrapper');
 
 
 
@@ -65,17 +66,11 @@ burgerBtn.on('click', function() {
   })
 });
 
-burgerClose.on('click', function() {
-  navigation.animate({
-    left: '-400px',
-  }, 500)
-});
 
-// $(document).on('click', function(event) {
-//   console.log(!navigation.is(event.target) && !navigation.is(burgerBtn));
-//   if(!navigation.is(event.target) && !navigation.is(burgerBtn)) {
-//     navigation.animate({
-//       left: '-400px',
-//     }, 500);
-//   }
-// });
+$(document).on('click', function(event) {
+  if(navigation.parents().is(event.target) || (event.target.closest('.navigation__close'))) {
+    navigation.animate({
+      left: -400,
+    }, 500);
+  }
+});
